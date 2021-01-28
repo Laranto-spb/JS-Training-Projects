@@ -1,0 +1,174 @@
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: 14%;
+  padding-bottom: 14%;
+  height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;  
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.time {
+  font-size: 8rem;
+  
+}
+
+.date {
+  margin: 2rem 0 2rem 0;
+  font-size: 1rem;
+}
+
+h1 {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.greeting {
+  order: 1;
+}
+
+.name {
+  order: 2;
+  margin-left: 10px;
+  max-width: 64%;
+  word-break:break-all;
+  outline: none;
+}
+
+.focus {
+  max-width: 60%;
+  word-break:break-all;
+  outline: none;
+
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+  .container {
+    position: relative;
+    max-width: 768px;
+    padding: 0 30px;
+  }
+
+  body {
+    padding-top: 14%;
+    padding-bottom: 14%;
+  }
+
+  .name {
+    max-width: 64%;
+    word-break:break-all;
+  }
+
+  .focus {
+    max-width: 768px;
+    word-break:break-all;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+  .container {
+    position: relative;
+    max-width: 320px;
+    padding: 0 10px;
+  }
+
+  body {
+    padding-top: 14%;
+    padding-bottom: 14%;
+    
+  }
+
+  h1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .time {
+    font-size: 4rem;
+  }
+
+  .greeting {
+    font-size: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    max-width: 100%;
+    word-break:break-all;
+  }
+
+  .focus {
+    max-width: 320px;
+    word-break:break-all;
+  }
+}
+
+@media only screen and (max-width: 319px) {
+  .container {
+    position: relative;
+    max-width: 200px;
+    padding: 0 10px;
+  }
+
+  body {
+    padding-top: 14%;
+    padding-bottom: 14%;
+  }
+
+  .time {
+    font-size: 2rem;
+  }
+
+  .date {
+    font-size: 1.5rem;
+  }
+
+  .greeting {
+    font-size: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.0rem;
+    max-width: 40%;
+    word-break:break-all;
+  }
+
+  .focus {
+    max-width: 200px;
+    word-break:break-all;
+  }
+
+}
+
