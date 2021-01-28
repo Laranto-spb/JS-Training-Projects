@@ -1,2 +1,3 @@
 # SkillBox-JS
-Tasks from JS module
+Tasks from JS module:
+1. TODO App
