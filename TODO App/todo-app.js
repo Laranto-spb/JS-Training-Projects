@@ -54,6 +54,17 @@ function createTodoItem(name) { // Create todo item (li)
   buttonGroup.append(deleteButton);
   item.append(buttonGroup);
 
+  doneButton.addEventListener('click', () => {
+    item.classList.toggle('list-group-item-success');
+  });
+
+  deleteButton.addEventListener('click', () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('Вы уверены?')) {
+      item.remove();
+    }
+  });
+
   return {
     item,
     doneButton,
@@ -61,34 +72,51 @@ function createTodoItem(name) { // Create todo item (li)
   };
 }
 
-function createTodoApp(container, title = 'Список дел') { // Create todo app (nest all functions in one to create App)
+function createTodoApp(container, title = 'Список дел', tasks) { // Create todo app (nest all functions in one to create App)
   let todoAppTitle = createAppTitle(title);
   let todoItemForm = createTodoItemForm();
   let todoList = createTodoList();
+
+  for (let defaultItem of tasks) { // Create default tasks
+    let defaultTask = createTodoItem(defaultItem.name);
+    if (defaultItem.done) {
+      defaultTask.item.classList.add('list-group-item-success');
+    }
+    todoList.append(defaultTask.item);
+  }
 
   container.append(todoAppTitle);
   container.append(todoItemForm.form);
   container.append(todoList);
 
+  if (!todoItemForm.input.value) { // Button disabled by default at start
+    todoItemForm.button.disabled = true;
+  }
+
+  todoItemForm.input.addEventListener('input', () => { // Button disabled when input and input empty
+    todoItemForm.button.disabled = false;
+    if (!todoItemForm.input.value) {
+      todoItemForm.button.disabled = true;
+    }
+  });
+
+  todoItemForm.input.addEventListener('focus', () => { // Button disabled when focused and input empty
+    todoItemForm.button.disabled = false;
+    if (!todoItemForm.input.value) {
+      todoItemForm.button.disabled = true;
+    }
+  });
+
   todoItemForm.form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    todoItemForm.button.disabled = true; // Disabled button after submit
 
     if (!todoItemForm.input.value) {
       return;
     }
 
     let todoItem = createTodoItem(todoItemForm.input.value);
-
-    todoItem.doneButton.addEventListener('click', () => {
-      todoItem.item.classList.toggle('list-group-item-success');
-    });
-
-    todoItem.deleteButton.addEventListener('click', () => {
-      if (confirm('Вы уверены?')) {
-        todoItem.item.remove();
-      }
-    });
-
     todoList.append(todoItem.item);
 
     todoItemForm.input.value = '';

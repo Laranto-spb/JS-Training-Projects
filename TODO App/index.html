@@ -10,7 +10,21 @@
   <script defer src="todo-app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      createTodoApp(document.getElementById('todo-app'), 'Мои дела');
+    let defaultTasks = [{
+    name: 'Купить хлеб',
+    done: true,
+  },
+  {
+    name: 'Купить молоко',
+    done: false,
+  },
+  {
+    name: 'Купить колбасу',
+    done: true,
+  },
+
+];
+      createTodoApp(document.getElementById('todo-app'), 'Мои дела', defaultTasks);
     })
   </script>
 </head>
