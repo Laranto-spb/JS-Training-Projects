@@ -2,14 +2,14 @@ let storageKeys = [{
   name: 'Мои дела',
   storageKey: 'myTasks',
 },
-{
-  name: 'Папины дела',
-  storageKey: 'dadTasks',
-},
-{
-  name: 'Мамины дела',
-  storageKey: 'momTasks',
-},
+  {
+    name: 'Папины дела',
+    storageKey: 'dadTasks',
+  },
+  {
+    name: 'Мамины дела',
+    storageKey: 'momTasks',
+  },
 ];
 
 let taskList;
@@ -125,36 +125,31 @@ function createTodoItem(name) { // Create todo item (li)
   };
 }
 
-function createTodoApp(container, title = 'Список дел', tasks) { // Create todo app (nest all functions in one to create App)
+function createTodoApp(container, title = 'Список дел', tasks, keyTasks) { // Create todo app (nest all functions in one to create App)
   let todoAppTitle = createAppTitle(title);
   let todoItemForm = createTodoItemForm();
   let todoList = createTodoList();
 
-  if (localStorage.getItem('myTasks') === null) {
-    let defaultList = [];
+  console.log(keyTasks);
 
-    for (let task of tasks) {
-      defaultList.push({
-        name: task.name,
-        isDone: task.done,
-      });
-    }
+  storageKeys.forEach((el) => {
+    if (localStorage.getItem(el.storageKey) === null) {
+      let defaultList = [];
 
-    for (let task of defaultList) {
-      let taskItem = createTodoItem(task.name);
-      if (task.isDone === true) {
-        taskItem.item.classList.add('list-group-item-success');
+      for (let task of tasks) {
+        defaultList.push({
+          name: task.name,
+          isDone: task.done,
+        });
       }
-      todoList.append(taskItem.item);
-    }
 
-    for (let key of storageKeys) {
-      localStorage.setItem(key.storageKey, JSON.stringify(defaultList)); // Add def tasks
+      localStorage.setItem(keyTasks, JSON.stringify(defaultList)); // Add def tasks to strg
+
     }
-  }
+  });
 
   for (let key of storageKeys) {
-    if (title === key.name) {
+    if (keyTasks === key.storageKey) {
       taskList = JSON.parse(localStorage.getItem(key.storageKey)); // Get deff tasks from storage
     }
   }
