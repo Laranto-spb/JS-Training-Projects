@@ -3,7 +3,7 @@ let numbers = document.querySelectorAll('.number'),
   decimalBtn = document.getElementById('decimal'),
   clearBtns = document.querySelectorAll('.clear-btn'),
   resultBtn = document.getElementById('result'),
-  desplay = document.getElementById('desplay'),
+  display = document.getElementById('display'),
   memoryCurrentNumber = 0,
   memoryNewNumber = false, /* Введено новое число или нет */
   memoryPendingOperation = '';  /* Ожидаемая операция */
@@ -21,7 +21,6 @@ for (let i = 0; i < operations.length; i++) {
   let operationBtns = operations[i];
   operationBtns.addEventListener('click', function (e) {
     operation(e.target.textContent);
-    console.log(e.target.textContent);
   });
 };
 
@@ -35,7 +34,7 @@ for (let i = 0; i < clearBtns.length; i++) {
 
 decimalBtn.addEventListener('click', decimal);
 
-resultBtn.addEventListener('click', op);
+resultBtn.addEventListener('click', operation);
 
 function numberPress(number) {
   if (memoryNewNumber) {
