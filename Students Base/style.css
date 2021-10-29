@@ -1,0 +1,47 @@
+.container {
+  margin: 0 auto;
+}
+
+.form {
+  margin: 0 auto;
+}
+
+.table-header {
+  cursor: pointer;
+}
+
+.limitations {
+  color: red;
+  font-size: 12px;
+}
+
+.filter-name {
+  margin-right: 50px;
+}
+
+.filter-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+@media (max-width: 1350px) {
+
+  .filter-form {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+.no-info.active {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  color: red;
+}
+
+.no-info {
+  display: none;
+}
