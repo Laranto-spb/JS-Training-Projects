@@ -1,0 +1,9 @@
+.author-wrap {
+  display: flex;
+  align-items: center;
+}
+
+
+.avatar {
+  border-radius: 100%;
+}
