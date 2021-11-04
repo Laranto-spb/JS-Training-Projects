@@ -18,7 +18,6 @@ async function getPosts () {
 async function getComments () {
   const response = await fetch(`https://gorest.co.in/public-api/comments?post_id=${id}`);
   const result = await response.json(response);
-  console.log(result)
   return result;
 }
 
